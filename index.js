@@ -1,13 +1,13 @@
 const timestring = require('timestring')
 
-function Primeout (ms, promise) {
-  if (typeof ms === 'string') {
-    ms = timestring(ms, 'ms')
+function Primeout (time, promise) {
+  if (typeof time === 'string') {
+    time = timestring(time, 'ms')
   } else {
-    ms = parseInt(ms)
+    time = parseInt(time)
   }
 
-  if (!Number.isFinite(ms) || ms < 0) {
+  if (!Number.isFinite(time) || time < 0) {
     throw new Error('Invalid ms parameter given when specifying a primeout')
   }
 
@@ -17,8 +17,8 @@ function Primeout (ms, promise) {
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      reject(new Error(`Promise timed out after ${ms}ms`))
-    }, ms)
+      reject(new Error(`Promise timed out after ${time}ms`))
+    }, time)
 
     promise.then(resolve, reject)
   })

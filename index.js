@@ -1,5 +1,11 @@
+const timestring = require('timestring')
+
 function Primeout (ms, promise) {
-  ms = parseInt(ms)
+  if (typeof ms === 'string') {
+    ms = timestring(ms, 'ms')
+  } else {
+    ms = parseInt(ms)
+  }
 
   if (!Number.isFinite(ms) || ms < 0) {
     throw new Error('Invalid ms parameter given when specifying a primeout')

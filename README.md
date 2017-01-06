@@ -31,18 +31,25 @@ All of these examples assume that `connect()` returns a promise.
 
 ``` js
 // Set a timeout of 5 seconds
-primeout(5000, connect()).then(...).catch(...)
+primeout(5000, connect())
+  .then(...)
+  .catch(...)
 ```
 
 ``` js
 // Set a timeout of 5 minutes
-primeout('5m', connect()).then(...).catch(...)
+primeout('5m', connect())
+  .then(...)
+  .catch(...)
 ```
 
 ``` js
 // Set a timeout that rejects if the
 // promise is not resolved or rejected
 // before the next event loop.
+primeout(0, connect())
+  .then(...)
+  .catch(...)
 ```
 
 For a clear-cut explanation of that last example (especially if you're new to _node.js_) see [Understanding the node.js event loop](http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/).
